@@ -45,6 +45,8 @@ streamlit run app.py
 The application follows a standard RAG-like (Retrieval-Augmented Generation) workflow:
 1. **Vectorization:** Input text is converted into a 384-dimensional vector using the `all-MiniLM-L6-v2` model.
 2. **Storage:** These embeddings are stored in a PostgreSQL `vector(384)` column.
+3. **Similarity Search:** When a user enters a query, it is vectorized on-the-fly and compared against the database using the `<->` (L2 Distance) operator.
+4. **Ranking:** The results are ordered by spatial proximity, where lower distance scores indicate higher semantic similarity.
 
 ## Expected Output
 
@@ -56,5 +58,3 @@ When the Streamlit web application is launched and a query like "feline nutritio
 ## AI Usage Disclosure
 
 During the development of this project, artificial intelligence tools (specifically Large Language Models) were utilized as an assistant. The AI was used to brainstorm the architectural pipeline, debug Docker configurations, and refine the English text in the documentation and presentation scripts. However, the core conceptual integration of PostgreSQL, `pgvector`, and the vectorization logic was entirely reviewed, orchestrated, and tested by the student to ensure technical accuracy and course alignment.
-4. **Similarity Search:** When a user enters a query, it is vectorized on-the-fly and compared against the database using the `<->` (L2 Distance) operator.
-5. **Ranking:** The results are ordered by spatial proximity, where lower distance scores indicate higher semantic similarity.
